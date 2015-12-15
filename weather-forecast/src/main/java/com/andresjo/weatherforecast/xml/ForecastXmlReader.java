@@ -70,33 +70,32 @@ public class ForecastXmlReader {
 		while (streamReader.hasNext()){
 			streamReader.next();
 			
-			if(eventIsEndElement()){
-	            if (localNameEquals("time")){
-	              return;
-	            }
+			if(eventIsEndElement() && localNameEquals("time")){
+				return;	       
 	        }
 			
 			if (eventIsStartElement()){
 				if (localNameEquals("symbol")){
 					forecastBuilder.symbol(streamReader.getAttributeValue(0));
 					forecastBuilder.symbolName(streamReader.getAttributeValue(2));
-				}
-			}
-			
-			if (eventIsStartElement()) {
-				if (localNameEquals("precipitation")) {
+				}else if(localNameEquals("precipitation")) {
 					forecastBuilder.precipitation(Double.parseDouble(streamReader.getAttributeValue(0)));
-				}
-			}
-			
-			if (eventIsStartElement()) {
-				if (localNameEquals("windDirection")) {
+				}else if(localNameEquals("windDirection")) {
 					forecastBuilder.windDirectionCode(streamReader.getAttributeValue(1));
 					forecastBuilder.windDirectionName(streamReader.getAttributeValue(2));
+				}else if(localNameEquals("windDirection")) {
+					forecastBuilder.windDirectionCode(streamReader.getAttributeValue(1));
+					forecastBuilder.windDirectionName(streamReader.getAttributeValue(2));
+				}else if(localNameEquals("windSpeed")) {
+					forecastBuilder.windSpeed(Double.parseDouble(streamReader.getAttributeValue(0)));
+					forecastBuilder.windSpeedName(streamReader.getAttributeValue(1));
+				}else if(localNameEquals("temperature")) {
+					forecastBuilder.temperatureUnit(streamReader.getAttributeValue(0));
+					forecastBuilder.temperature(Double.parseDouble(streamReader.getAttributeValue(1)));
 				}
 			}
+			
 		}
-		
 		
 	}
 
@@ -128,6 +127,7 @@ public class ForecastXmlReader {
 					locationBuilder.longitude(Double.parseDouble(streamReader.getAttributeValue(2)));
 				}
 			}
+			
 		}
 	}
 	

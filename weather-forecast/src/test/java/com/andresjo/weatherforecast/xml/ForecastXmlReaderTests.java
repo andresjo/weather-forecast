@@ -137,4 +137,38 @@ public class ForecastXmlReaderTests {
 		
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void parseAndGetCorrectWindSpeed() {
+		Double expected = 2.3;
+		Double actual = forecast.getWindSpeed();
+		
+		assertEquals(expected, actual, DELTA);
+	}
+	
+	@Test
+	public void parseAndGetCorrectWindSpeedName() {
+		String expected = "Svak vind";
+		String actual = forecast.getWindSpeedName();
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void parseAndGetCorrectTemperatureUnit() {
+		String expected = "celsius";
+		String actual = forecast.getTemperatureUnit();
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void parseAndGetCorrectTemperature() {
+		Double expected = 20.0;
+		Double actual = forecast.getTemperature();
+		
+		assertEquals(expected, actual, DELTA);
+	}
+	
+	
 }

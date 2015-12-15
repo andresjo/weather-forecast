@@ -17,7 +17,7 @@ public class App {
 		
 		Forecast forecast = new ForecastBuilder().location(location).fromTime(LocalDateTime.parse("2015-09-09T12:00:00")).
 				toTime(LocalDateTime.parse("2015-09-09T18:00:00")).symbol("3").symbolName("Delvis skyet").precipitation(0).windDirectionName("Sør-sørvest").
-				windSpeed(0.8).windName("Flau vind").temperature(18).build();
+				windSpeed(0.8).windSpeedName("Flau vind").temperature(18).build();
 		
 		System.out.println(forecast+ "\n");
 		System.out.println(forecast.getLocation().getTimezone().getDisplayName());

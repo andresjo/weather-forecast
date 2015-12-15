@@ -28,7 +28,7 @@ public class Forecast {
 			String symbolName, double precipitation,
 			String windDirectionCode,
 			String windDirectionName, double windSpeed, 
-			String windName, String temperatureUnit,
+			String windSpeedNameName, String temperatureUnit,
 			double temperature){
 		
 		this.location = location;
@@ -40,7 +40,7 @@ public class Forecast {
 		this.windDirectionCode = windDirectionCode;
 		this.windDirectionName = windDirectionName;
 		this.windSpeed = windSpeed;
-		this.windSpeedName = windName;
+		this.windSpeedName = windSpeedNameName;
 		this.temperatureUnit = temperatureUnit;
 		this.temperature = temperature;
 		
@@ -82,7 +82,7 @@ public class Forecast {
 		return windSpeed;
 	}
 
-	public String getWindName() {
+	public String getWindSpeedName() {
 		return windSpeedName;
 	}
 	
@@ -114,7 +114,7 @@ public class Forecast {
 		private String nestedWindDirectionCode;
 		private String nestedWindDirectionName;
 		private double nestedWindSpeed;
-		private String nestedWindName;
+		private String nestedWindSpeedName;
 		private String nestedTemperatureUnit;
 		private double nestedTemperature;
 		
@@ -163,8 +163,8 @@ public class Forecast {
 			return this;
 		}
 		
-		public ForecastBuilder windName(String windName){
-			this.nestedWindName = windName;
+		public ForecastBuilder windSpeedName(String windSpeedName){
+			this.nestedWindSpeedName = windSpeedName;
 			return this;
 		}
 		
@@ -184,7 +184,7 @@ public class Forecast {
 					nestedToTime, nestedSymbol, nestedSymbolName,
 					nestedPrecipitation, nestedWindDirectionCode, 
 					nestedWindDirectionName, nestedWindSpeed, 
-					nestedWindName, nestedTemperatureUnit, 
+					nestedWindSpeedName, nestedTemperatureUnit, 
 					nestedTemperature);
 		}
 	}
