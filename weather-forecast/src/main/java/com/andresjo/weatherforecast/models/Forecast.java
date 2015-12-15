@@ -2,6 +2,10 @@ package com.andresjo.weatherforecast.models;
 
 import java.time.LocalDateTime;
 
+import static com.andresjo.weatherforecast.Constants.YR_CREDIT_BOKMAAL;
+import static com.andresjo.weatherforecast.Constants.YR_CREDIT_NYNORSK;
+import static com.andresjo.weatherforecast.Constants.YR_CREDIT_ENGLISH;
+
 public class Forecast {
 	private Location location;
 	
@@ -100,6 +104,8 @@ public class Forecast {
 		res += "Værmelding for "+location.getName()+ ", "+location.getCountry()+".\n";
 		res += symbolName+ ", "+windDirectionName+" "+windSpeedName+".\n";
 		res += temperature+" grader, "+precipitation+"mm nedbør.";
+		
+		res += "\n " + YR_CREDIT_BOKMAAL;
 		
 		return res;
 	}
