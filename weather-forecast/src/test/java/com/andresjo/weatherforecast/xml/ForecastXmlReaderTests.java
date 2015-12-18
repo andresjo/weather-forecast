@@ -18,7 +18,7 @@ public class ForecastXmlReaderTests {
 	@BeforeClass
 	public static void buildLocation(){
 		try {
-			ForecastXmlReader xmlReader = new ForecastXmlReader("src/test/resources/forecasts/varsel.xml", "UTF8");
+			ForecastXmlReader xmlReader = new ForecastXmlReader("src/test/resources/forecasts/varsel.xml");
 			forecast = xmlReader.parseForecast();
 			
 		} catch (FileNotFoundException | XMLStreamException e) {

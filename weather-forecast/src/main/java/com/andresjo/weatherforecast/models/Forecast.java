@@ -98,10 +98,8 @@ public class Forecast {
 		return temperature;
 	}
 	
-	public String toString(){
-		String res = "";
-		
-		res += "Værmelding for "+location.getName()+ ", "+location.getCountry()+".\n";
+	public String toString(){		
+		String res = "Værmelding for "+location.getName()+ ", "+location.getCountry()+".\n";
 		res += symbolName+ ", "+windDirectionName+" "+windSpeedName+".\n";
 		res += temperature+" grader, "+precipitation+"mm nedbør.";
 		

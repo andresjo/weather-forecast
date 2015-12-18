@@ -2,6 +2,9 @@ package com.andresjo.weatherforecast.xml;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.TimeZone;
 
@@ -15,16 +18,24 @@ import com.andresjo.weatherforecast.models.Location.LocationBuilder;
 
 
 public class ForecastXmlReader {
+	private final String UTF8_ENCODING = "UTF8";
 	
 	private XMLStreamReader streamReader;
 	
-	public ForecastXmlReader(String filePath, String encoding) throws FileNotFoundException, XMLStreamException{
-		XMLInputFactory factory = XMLInputFactory.newInstance();
-		this.streamReader = factory.createXMLStreamReader(new FileInputStream(filePath), encoding);
-	}
-	
 	public ForecastXmlReader(XMLStreamReader streamReader){
 		this.streamReader = streamReader;
+	}
+	
+	public ForecastXmlReader(String filePath) throws FileNotFoundException, XMLStreamException{
+		XMLInputFactory factory = XMLInputFactory.newInstance();
+		this.streamReader = factory.createXMLStreamReader(new FileInputStream(filePath), UTF8_ENCODING);
+	}
+	
+	public ForecastXmlReader(URL xmlUrl) throws IOException, XMLStreamException{
+		InputStream stream = xmlUrl.openStream();
+		
+		XMLInputFactory factory = XMLInputFactory.newInstance();
+		this.streamReader = factory.createXMLStreamReader(stream, UTF8_ENCODING);
 	}
 	
 	public Forecast parseForecast() throws XMLStreamException {
